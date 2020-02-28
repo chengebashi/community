@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>校园社团官网</title>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- CSS FILES -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/fontawesome.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/featherlight.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/rrssb.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="../static/images/fac.png">
+</head>
+
+<body>
+    <!-- READING POSITION INDICATOR -->
+    <progress value="0" id="eskimo-progress-bar">
+        <span class="eskimo-progress-container">
+            <span class="eskimo-progress-bar"></span>
+        </span>
+    </progress>
+    <!-- SITE WRAPPER -->
+    <div id="eskimo-site-wrapper">
+        <!-- MAIN CONTAINER -->
+        <main id="eskimo-main-container">
+            <div class="container">
+                <!-- SIDEBAR -->
+                <div id="eskimo-sidebar">
+                    <div id="eskimo-sidebar-wrapper" class="d-flex align-items-start flex-column h-100 w-100">
+                        <!-- LOGO -->
+                        <div id="eskimo-logo-cell" class="w-100">
+                            <a class="eskimo-logo-link" href="index.html">
+                                <img src="../static/images/menu_logo.png" class="eskimo-logo" alt="eskimo" />
+                            </a>
+                        </div>
+                        <!-- MENU CONTAINER -->
+                        <div id="eskimo-sidebar-cell" class="w-100">
+                            <!-- MOBILE MENU BUTTON -->
+                            <div id="eskimo-menu-toggle">MENU</div>
+                            <!-- MENU -->
+                            <nav id="eskimo-main-menu" class="menu-main-menu-container">
+                                <ul class="eskimo-menu-ul">
+                                    <li><a href="{{ url_for('index') }}"><i class="fa fa-home fa-lg">&nbsp</i>首页</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="index.html">Demo 1</a></li>-->
+                                            <!--<li><a href="index.html">Demo 2</a></li>-->
+                                            <!--<li><a href="index3.html">Demo 3</a></li>-->
+                                        <!--</ul>-->
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-drivers-license-o">&nbsp</i>我的信息</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="about.html">Demo 1</a></li>
+                                            <li><a href="about-2.html">Demo 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Blog</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog.html">Full Width</a></li>
+                                            <li><a href="blog-2-column.html">2 Column</a></li>
+                                            <li><a href="blog-3-column.html">3 Column</a></li>
+                                            <li><a href="single-post.html">Single Post</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="galleries.html">Galleries</a></li>
+                                    <li><a href="other-features.html">Other Features</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- SOCIAL MEDIA ICONS -->
+                        <div id="eskimo-social-cell" class="mt-auto w-100">
+                            <div id="eskimo-social-inner">
+                                <ul class="eskimo-social-icons">
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TOP ICONS -->
+                <ul class="eskimo-top-icons">
+                    <li id="eskimo-panel-icon">
+                        <a href="#" class="eskimo-panel-open"><i class="fa fa-user-circle-o"></i></a>
+                    </li>
+                    <li id="eskimo-search-icon">
+                        <a id="eskimo-open-search" href="#"><i class="fa fa-search"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <!-- PAGE TITLE -->
+                <div class="eskimo-page-title">
+                    <h1><i class="fa fa-steam"></i><span>&nbsp网管会</span></h1>
+                    <div style="font-weight: 300" class="eskimo-page-title-meta">
+                        <div class="eskimo-author-meta">
+                            创始人:
+                        </div>
+                        <div class="eskimo-cat-meta">
+                            陈哥
+                        </div>
+                        <div class="eskimo-author-meta">成立时间: </div>
+                        <div class="eskimo-cat-meta">2020-2-28</div>
+                        <div class="eskimo-date-meta">目前人数: </div>
+                        <div class="eskimo-reading-meta">80</div>
+                    </div>
+                </div>
+                <!-- FEATURED IMAGE -->
+                <div class="eskimo-featured-img">
+                    <img src="../static/images/back_pack_1.jpg" alt="" />
+                </div>
+                <!-- POST CONTENT -->
+                <div class="eskimo-page-content">
+                    <h3 class="community_title"><i class="fa fa-fw fa-file-text-o"></i> 社团简介</h3>
+                    <hr class="bottom_line">
+                    <blockquote>
+                        <p>里面的人个个都是人才</p>
+                    </blockquote>
+
+                    <h3 class="community_title"><i class="fa fa-fw fa-group"></i> 部门介绍</h3>
+                    <hr style="border-top: 1px solid blueviolet" class="bottom_line">
+
+                    <h4 style="font-size: 18px;margin-top: 1em" class="community_title"><i class="fa fa-gg"></i> 部门</h4>
+                    <blockquote style="border-left: 4px solid blueviolet;margin-top: 1em">
+                        <p>里面的人个个都是人才</p>
+                    </blockquote>
+
+                    <h4 style="font-size: 18px;margin-top: 1em" class="community_title"><i class="fa fa-gg"></i> 部门</h4>
+                    <blockquote style="border-left: 4px solid blueviolet;margin-top: 1em">
+                        <p>里面的人个个都是人才</p>
+                    </blockquote>
+
+                    <h3 class="community_title"><i class="fa fa-fw fa-thumbs-up"></i> 社团成就</h3>
+                    <hr style="border-top: 1px solid #bba60f" class="bottom_line">
+                    <blockquote style="border-left: 4px solid  #bba60f">
+                        <p>里面的人个个都是人才</p>
+                    </blockquote>
+
+                    <h3 class="community_title"><i class="fa fa-fw fa-thumbs-up"></i> 社团生活</h3>
+                    <hr style="border-top: 1px solid green" class="bottom_line">
+                    <!-- IMAGE GALLERY -->
+                    <div class="eskimo-masonry-grid eskimo-gallery">
+                        <div class="eskimo-three-columns" data-columns>
+                            <!-- GALLERY ITEM 1 -->
+                            <div class="eskimo-gallery-item">
+                                <a href="#" data-featherlight="../static/images/back_pack_1.jpg" class="eskimo-lightbox">
+                                    <img src="../static/images/back_pack_1.jpg" alt="" />
+                                    <!--<img src="../static/uploads/2018/05/blog18-900x600.jpg" alt="" />-->
+                                </a>
+                            </div>
+
+                            <div class="eskimo-gallery-item">
+                                <a href="#" data-featherlight="../static/images/back_pack_1.jpg" class="eskimo-lightbox">
+                                    <img src="../static/images/back_pack_1.jpg" alt="" />
+                                    <!--<img src="../static/uploads/2018/05/blog18-900x600.jpg" alt="" />-->
+                                </a>
+                            </div>
+
+                            <div class="eskimo-gallery-item">
+                                <a href="#" data-featherlight="../static/images/back_pack_1.jpg" class="eskimo-lightbox">
+                                    <img src="../static/images/back_pack_1.jpg" alt="" />
+                                    <!--<img src="../static/uploads/2018/05/blog18-900x600.jpg" alt="" />-->
+                                </a>
+                            </div>
+
+                            <div class="eskimo-gallery-item">
+                                <a href="#" data-featherlight="../static/images/back_pack_1.jpg" class="eskimo-lightbox">
+                                    <img src="../static/images/back_pack_1.jpg" alt="" />
+                                    <!--<img src="../static/uploads/2018/05/blog18-900x600.jpg" alt="" />-->
+                                </a>
+                            </div>
+                            <!-- GALLERY ITEM 2 -->
+
+                            <!-- GALLERY ITEM 3 -->
+
+                            <!-- GALLERY ITEM 4 -->
+
+                            <!-- GALLERY ITEM 5 -->
+
+                            <!-- GALLERY ITEM 6 -->
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <!-- TAGS -->
+
+                    <!-- Responsive Social Sharing Buttons -- https://github.com/kni-labs/rrssb -->
+
+                    <!-- POST NAVIGATION -->
+
+                </div>
+                <div class="clearfix"></div>
+                <hr />
+
+                <div style="height: 500px;">
+
+                </div>
+
+                <!-- COMMENTS -->
+                <div id="eskimo-comments-wrapper">
+                    <div id="eskimo_comments_block" class="eskimo_comments_block">
+                        <h3 class="eskimo-title-with-border">
+                            <span>Comments</span>
+                        </h3>
+                        <div class="eskimo_commentlist">
+                            <!-- COMMENT 1 -->
+                            <div class="eskimo_comment_wrapper">
+                                <div class="eskimo_comments">
+                                    <div class="eskimo_comment">
+                                        <div class="eskimo_comment_inner">
+                                            <div class="eskimo_comment_left">
+                                                <img alt='' src='http://0.gravatar.com/avatar/0b19666d0fc7a149e6f8f2319a04ef63?s=60&#038;d=mm&#038;r=g' />
+                                            </div>
+                                            <div class="eskimo_comment_right">
+                                                <div class="eskimo_comment_right_inner ">
+                                                    <cite class="eskimo_fn">
+                                                        <a href='author.html'>Egemenerd</a>
+                                                    </cite>
+                                                    <div class="eskimo_comment_links">
+                                                        <i class="fa fa-clock-o"></i> May 23, 2018 at 9:57 pm - <a href="#">Reply</a>
+                                                    </div>
+                                                    <div class="eskimo_comment_text">
+                                                        <p>Tempor cillum nostrud ex sunt expetendis et ipsum quis. Ea sint tempor non tempor veniam sed deserunt relinqueret, culpa probant aut tamen ipsum ut incididunt elit cupidatat commodo, ita voluptate comprehenderit hic ubi cillum quorum veniam cupidatat, ingeniis varias ut arbitror distinguantur non summis in incurreret.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- COMMENT 1 REPLY -->
+                                <div class="eskimo_comment_wrapper">
+                                    <div class="eskimo_comments">
+                                        <div class="eskimo_comment">
+                                            <div class="eskimo_comment_inner">
+                                                <div class="eskimo_comment_left">
+                                                    <img alt='' src='http://0.gravatar.com/avatar/0b19666d0fc7a149e6f8f2319a04ef63?s=60&#038;d=mm&#038;r=g' />
+                                                </div>
+                                                <div class="eskimo_comment_right">
+                                                    <div class="eskimo_comment_right_inner ">
+                                                        <cite class="eskimo_fn">
+                                                            <a href='author.html'>Egemenerd</a>
+                                                        </cite>
+                                                        <div class="eskimo_comment_links">
+                                                            <i class="fa fa-clock-o"></i> May 23, 2018 at 9:57 pm - <a href="#">Reply</a>
+                                                        </div>
+                                                        <div class="eskimo_comment_text">
+                                                            <p>Incurreret elit ab excepteur praetermissum. In dolor expetendis cernantur a expetendis noster amet e quorum in fugiat cupidatat quo tamen minim sed ex quo quae irure aute. Aut ipsum mentitum, malis fabulas aut esse noster est se lorem praetermissum, quem admodum litteris.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- COMMENT 2 -->
+                            <div class="eskimo_comment_wrapper">
+                                <div class="eskimo_comments">
+                                    <div class="eskimo_comment">
+                                        <div class="eskimo_comment_inner">
+                                            <div class="eskimo_comment_left">
+                                                <img alt='' src='http://0.gravatar.com/avatar/0b19666d0fc7a149e6f8f2319a04ef63?s=60&#038;d=mm&#038;r=g' />
+                                            </div>
+                                            <div class="eskimo_comment_right">
+                                                <div class="eskimo_comment_right_inner ">
+                                                    <cite class="eskimo_fn">
+                                                        <a href='author.html'>Egemenerd</a>
+                                                    </cite>
+                                                    <div class="eskimo_comment_links">
+                                                        <i class="fa fa-clock-o"></i> May 23, 2018 at 10:12 pm - <a href="#">Reply</a>
+                                                    </div>
+                                                    <div class="eskimo_comment_text">
+                                                        <p>Probant qui sint expetendis sed quamquam esse aute ad dolor te voluptate quid hic cupidatat exercitation, fabulas a lorem ingeniis, litteris nulla veniam a sunt id arbitror de malis ne nam quem quid quo coniunctione.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="eskimo_comment_form" class="eskimo_comment_form">
+                    <h3>Leave a Reply</h3>
+                    <form action="single-post.html" method="post" id="commentform">
+                        <p><textarea id="comment" name="comment" cols="45" rows="8" required="required"></textarea></p>
+                        <input name="submit" type="submit" id="submit" class="btn btn-default" value="Post Comment" />
+                    </form>
+                </div>
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer id="eskimo-footer">
+            <div class="container">
+                <div class="row eskimo-footer-wrapper">
+                    <!-- FOOTER WIDGET 1 -->
+                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <h5 class="eskimo-title-with-border"><span>About Me</span></h5>
+                        <p>Trusted by thousands of customers, my unique themes and plugins help you make beautiful responsive web sites with ease.</p>
+                        <p><a href="about.html" class="btn btn-default">Read More</a></p>
+                    </div>
+                    <!-- FOOTER WIDGET 2 -->
+                    <div class="col-12 col-lg-6">
+                        <h5 class="eskimo-title-with-border"><span>Newsletter</span></h5>
+                        <form method="post" action="index.html">
+                            <label>Subscribe to our mailing list!</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" name="EMAIL" placeholder="Your email address" required />
+                                <div class="input-group-append">
+                                    <input type="submit" value="Sign up" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- CREDITS -->
+                <div class="eskimo-footer-credits">
+                    <p>
+                        Made with love by <a href="http://www.bootstrapmb.com" target="_blank">Egemenerd</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- GO TO TOP BUTTON -->
+    <a id="eskimo-gototop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- SLIDE PANEL OVERLAY -->
+    <div id="eskimo-overlay"></div>
+    <!-- SLIDE PANEL -->
+
+
+    <!-- FULLSCREEN SEARCH -->
+    <div id="eskimo-fullscreen-search">
+        <div id="eskimo-fullscreen-search-content">
+            <a href="#" id="eskimo-close-search"><i class="fa fa-times"></i></a>
+            <form role="search" method="get" action="search.html" class="eskimo-lg-form">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Enter a keyword..." name="s" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- JS FILES -->
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/salvattore.min.js"></script>
+    <script src="../static/js/panel.js"></script>
+    <script src="../static/js/reading-position-indicator.js"></script>
+    <script src="../static/js/rrssb.min.js"></script>
+    <script src="../static/js/featherlight.js"></script>
+    <script src="../static/js/custom.js"></script>
+</body>
+
+</html>
