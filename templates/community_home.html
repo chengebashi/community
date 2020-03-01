@@ -26,7 +26,7 @@
     <!-- SITE WRAPPER -->
     <div id="eskimo-site-wrapper">
         <!-- MAIN CONTAINER -->
-        <main id="eskimo-main-container">
+        <main style="padding-bottom: 0" id="eskimo-main-container">
             <div class="container">
                 <!-- SIDEBAR -->
                 <div id="eskimo-sidebar">
@@ -95,92 +95,74 @@
                     </li>
                 </ul>
                 <div class="clearfix"></div>
-                <!-- SLIDER WITH ONE POST -->
-                <div class="eskimo-carousel-container eskimo-bg-loader">
-                    <div id="eskimo-post-slider" class="eskimo-slider">
-                        <!-- SLIDE -->
-                        <div>
-                            <a class="eskimo-slider-img" href=""></a>
-                            <ul class="eskimo-slider-image-meta eskimo-image-meta-post">
-                                <li>
-                                    <a href="#"><span class="badge badge-default">Feb 26, 2020</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><span style="font-weight: 300" class="badge badge-default">青春 &amp; 活力</span></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                            <img src="/static/images/menu.jpg" alt="青春" />
-                            <div class="eskimo-slider-desc">
-                                <div class="eskimo-slider-desc-inner">
-                                    <h2 class="card-title">以梦为马，不负韶华</h2>
-                                    <p>年轻活力是我的资本，张扬个性凸显胆识是我的超越</p>
-                                </div>
-                            </div>
+                <!-- PAGE TITLE -->
+                <div style="background: rgba(0, 123, 255, 0.55);" class="eskimo-page-title" id="title_top">
+                    <h1><i class="fa fa-bank"></i><span>&nbsp社 团 大 厅</span></h1>
+                    <div style="font-weight: 300" class="eskimo-page-title-meta">
+                        <div class="eskimo-author-meta">
+                            <i style="color: red" class="fa fa-heart"></i>
+                            生活不止眼前的苟且，还有生活和远方，愿你最终能成为你想成为的人~
                         </div>
+
                     </div>
                 </div>
+                <!-- SLIDER WITH ONE POST -->
+                <!--<div class="eskimo-carousel-container eskimo-bg-loader">-->
+                    <!--<div id="eskimo-post-slider" class="eskimo-slider">-->
+                        <!--&lt;!&ndash; SLIDE &ndash;&gt;-->
+                        <!--<div>-->
+                            <!--<a class="eskimo-slider-img" href=""></a>-->
+                            <!--<ul class="eskimo-slider-image-meta eskimo-image-meta-post">-->
+                                <!--<li>-->
+                                    <!--<a href="#"><span class="badge badge-default">Feb 26, 2020</span></a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a href="#"><span style="font-weight: 300" class="badge badge-default">青春 &amp; 活力</span></a>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                            <!--<div class="clearfix"></div>-->
+                            <!--<img src="/static/images/menu.jpg" alt="青春" />-->
+                            <!--<div class="eskimo-slider-desc">-->
+                                <!--<div class="eskimo-slider-desc-inner">-->
+                                    <!--<h2 class="card-title">以梦为马，不负韶华</h2>-->
+                                    <!--<p>年轻活力是我的资本，张扬个性凸显胆识是我的超越</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!-- BLOG POSTS -->
                 <div class="eskimo-masonry-grid">
                     <div class="eskimo-two-columns" data-columns>
                         <!-- POST 1 -->
-                        {% if n<4 %}
-                        {% for i in range(0, n) %}
+                        {% for i in response %}
                         <div class="card-masonry">
                             <div class="card">
-                                <a href="/base/{{ response[i][5] }}">
+                                <a href="/base/{{ i[5] }}">
                                         <img class="card-vertical-img" src="../static/images/back_pack_1.jpg" alt="" />
                                     </a>
                                 <div class="card-border">
                                     <div class="card-body">
                                         <div class="card-category">
-                                            <span><a>创始人: {{ response[i][2] }}</a></span>
+                                            <span><a>创始人: {{ i[2] }}</a></span>
                                         </div>
-                                        <h3 class="card-title"><a href="/base/{{ response[i][5] }}">{{ response[i][0] }}</a></h3>
-                                        <p style="font-family: sans-serif">{{ response[i][1] }}</p>
+                                        <h3 class="card-title"><a href="/base/{{ i[5] }}">{{ i[0] }}</a></h3>
+                                        <p style="font-family: sans-serif">{{ i[1] }}</p>
                                     </div>
                                     <div class="card-footer">
                                         <div class="eskimo-author-meta">
                                             <a class="author-meta">创建时间: </a>
                                         </div>
                                         <div class="eskimo-date-meta">
-                                            <a>{{ response[i][3] }}</a>
+                                            <a>{{ i[3] }}</a>
                                         </div>
-                                        <div class="eskimo-reading-meta">🔥: &nbsp{{ response[i][4] }}</div>
+                                        <div class="eskimo-reading-meta">🔥: &nbsp{{ i[4] }}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
-                        {% else %}
-                        {% for i in range(0,4) %}
-                        <div class="card-masonry">
-                            <div class="card">
-                                <a href="/base/{{ response[i][5] }}">
-                                        <img class="card-vertical-img" src="../static/images/back_pack_1.jpg" alt="" />
-                                    </a>
-                                <div class="card-border">
-                                    <div class="card-body">
-                                        <div class="card-category">
-                                            <span><a>创始人: {{ response[i][2] }}</a></span>
-                                        </div>
-                                        <h3 class="card-title"><a href="/base/{{ response[i][5] }}">{{ response[i][0] }}</a></h3>
-                                        <p style="font-family: sans-serif">{{ response[i][1] }}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="eskimo-author-meta">
-                                            <a class="author-meta">创建时间: </a>
-                                        </div>
-                                        <div class="eskimo-date-meta">
-                                            <a>{{ response[i][3] }}</a>
-                                        </div>
-                                        <div class="eskimo-reading-meta">🔥: &nbsp{{ response[i][4] }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
+
                         <!-- POST 2 -->
 
                         <!-- POST 3 -->
@@ -194,48 +176,21 @@
                     </div>
                 </div>
                 <!-- VIEW ALL BUTTON -->
-                <div class="eskimo-view-more">
-                    <a style="color: wheat" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 查看更多</a>
-                </div>
+                <!--<div class="eskimo-view-more">-->
+                    <!--<a style="color: wheat" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 查看更多</a>-->
+                <!--</div>-->
 
                 <!-- DIVIDER -->
                 <hr class="section-divider" />
 
                 <!-- CAROUSEL -->
-                <div class="eskimo-widget-title">
-                    <h3 class="eskimo-carousel-title"><span>最新公告 </span><i style="color:red;" class="fa fa-volume-up"></i></h3>
-                </div>
+                <!--<div class="eskimo-widget-title">-->
+                    <!--<h3 class="eskimo-carousel-title"><span>最新公告 </span><i style="color:red;" class="fa fa-volume-up"></i></h3>-->
+                <!--</div>-->
 
-
-                <div class="row">
-                    <!-- ALERTS -->
-                    <div class="col-12">
-                        <h5 style="opacity: 0" class="eskimo-title-with-border"><span>ALERTS</span></h5>
-                        <!-- ALERT INFO -->
-
-                        <!--for循环-->
-                        {% for p in range(0,3) %}
-                        <div style="margin-bottom: 20px" class="card alert alert-info length">
-                            <div class="close" data-dismiss="alert">&times;</div>
-                            <h6>{{ public[p][0] }}</h6>
-                            <p>发布时间:{{ public[p][2] }}</p>
-                            <p>{{ public[p][1] }}</p>
-                        </div>
-                        {% endfor %}
-                        <!--for循环结束-->
-
-
-                        <!-- ALERT SUCCESS -->
-
-                        <!-- ALERT WARNING -->
-
-                        <!-- ALERT DANGER -->
-                    </div>
-                </div>
-
-                <div style="margin-top: 40px" class="eskimo-view-more">
-                    <a style="color: wheat;width: 20%" class="btn btn-default" id="show_div"><i class="fa fa-plus"></i>查看更多</a>
-                </div>
+                <!--<div style="margin-top: 40px" class="eskimo-view-more">-->
+                    <!--<a style="color: wheat;width: 20%" class="btn btn-default" id="show_div"><i class="fa fa-plus"></i>查看更多</a>-->
+                <!--</div>-->
 
             </div>
         </main>
@@ -244,25 +199,15 @@
             <div class="container">
                 <div class="row eskimo-footer-wrapper">
                     <!-- FOOTER WIDGET 1 -->
-                    <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div style="flex: 0 0 100%;max-width: 100%" class="col-12 col-lg-6 mb-4 mb-lg-0">
                         <h5 class="eskimo-title-with-border"><span style="font-weight: 300">每日一句</span></h5>
                         <p class="everyday_one">明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。</p>
                         <p class="one_title">——《水调歌头·明月几时有》 苏轼</p>
                         <!--<p><a href="about.html" class="btn btn-default">Read More</a></p>-->
                     </div>
                     <!-- FOOTER WIDGET 2 -->
-                    <div class="col-12 col-lg-6">
-                        <h5 class="eskimo-title-with-border"><span style="font-weight: 300">资料下载</span></h5>
-                        {% for a in range(0,3) %}
-                        <div style="margin-bottom: 5px" class="card alert alert-info">
-                            <i style="margin-bottom: 0; top:11px;float: left" class="fa fa-chain"></i>
-                            <a class="files">&nbsp明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。</a>
-                            <a style="color: black" href=""><i class="fa fa-cloud-download"></i></a>
-                        </div>
-                        {% endfor %}
 
 
-                    </div>
                 </div>
                 <!-- CREDITS -->
                 <div class="eskimo-footer-credits">
@@ -302,87 +247,57 @@
     <script src="../static/js/reading-position-indicator.js"></script>
     <script src="../static/js/custom.js"></script>
     <!-- POST SLIDER -->
-    <script>
-        (function($) {
-            "use strict";
-            $(document).ready(function() {
-                $('#eskimo-post-slider').slick({
-                    autoplay: true,
-                    autoplaySpeed: 5000,
-                    slidesToScroll: 1,
-                    adaptiveHeight: true,
-                    slidesToShow: 1,
-                    arrows: true,
-                    dots: false,
-                    fade: true
-                });
-            });
-            $(window).on('load', function() {
-                $('#eskimo-post-slider').css('opacity', '1');
-                $('#eskimo-post-slider').parent().removeClass('eskimo-bg-loader');
-            });
-        })(jQuery);
+    <!--<script>-->
+        <!--(function($) {-->
+            <!--"use strict";-->
+            <!--$(document).ready(function() {-->
+                <!--$('#eskimo-post-slider').slick({-->
+                    <!--autoplay: true,-->
+                    <!--autoplaySpeed: 5000,-->
+                    <!--slidesToScroll: 1,-->
+                    <!--adaptiveHeight: true,-->
+                    <!--slidesToShow: 1,-->
+                    <!--arrows: true,-->
+                    <!--dots: false,-->
+                    <!--fade: true-->
+                <!--});-->
+            <!--});-->
+            <!--$(window).on('load', function() {-->
+                <!--$('#eskimo-post-slider').css('opacity', '1');-->
+                <!--$('#eskimo-post-slider').parent().removeClass('eskimo-bg-loader');-->
+            <!--});-->
+        <!--})(jQuery);-->
 
-    </script>
+    <!--</script>-->
     <!-- POST CAROUSEL -->
-    <script>
-        (function($) {
-            "use strict";
-            $(document).ready(function() {
-                $('#eskimo-post-carousel').slick({
-                    infinite: false,
-                    slidesToScroll: 1,
-                    arrows: true,
-                    dots: false,
-                    slidesToShow: 3,
-                    responsive: [{
-                        breakpoint: 992,
-                        settings: {
-                            slidesToShow: 2
-                        }
-                    }, {
-                        breakpoint: 576,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }]
+    <!--<script>-->
+        <!--(function($) {-->
+            <!--"use strict";-->
+            <!--$(document).ready(function() {-->
+                <!--$('#eskimo-post-carousel').slick({-->
+                    <!--infinite: false,-->
+                    <!--slidesToScroll: 1,-->
+                    <!--arrows: true,-->
+                    <!--dots: false,-->
+                    <!--slidesToShow: 3,-->
+                    <!--responsive: [{-->
+                        <!--breakpoint: 992,-->
+                        <!--settings: {-->
+                            <!--slidesToShow: 2-->
+                        <!--}-->
+                    <!--}, {-->
+                        <!--breakpoint: 576,-->
+                        <!--settings: {-->
+                            <!--slidesToShow: 1-->
+                        <!--}-->
+                    <!--}]-->
 
-                });
-                $('#eskimo-post-carousel').css('opacity', '1');
-            });
-        })(jQuery);
+                <!--});-->
+                <!--$('#eskimo-post-carousel').css('opacity', '1');-->
+            <!--});-->
+        <!--})(jQuery);-->
 
-    </script>
-
-    <!--js定义随机背景色-->
-    <script>
-        $(".alert").css("background-color",function () {
-        var colors=['#6ec7e0','#86d9ab','#fcd27b','#e4c4a1','#cc90cc','#f7765f'];
-        var c=Math.floor(Math.random()*5);
-        return colors[c];
-        });
-    </script>
-
-    <!--js隐藏div-->
-    <script type="text/javascript">
-        var l = $(".length").length;
-        var n = $(".length");
-        if (l > 2){
-            for (j=2; j<=l; j++){
-                k = j-1;
-                n[k].style.display="none";
-            }
-        }
-        $("#show_div").click(function () {
-            n.remove("display","none")
-        })
-    </script>
-    <!--js控制显示隐藏的div-->
-    <script type="text/javascript">
-        $("#show_div").click(function () {
-            $(".length").css("display","");
-        })
-    </script>
+    <!--</script>-->
 </body>
 
 </html>
