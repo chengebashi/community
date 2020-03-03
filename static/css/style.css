@@ -84,6 +84,60 @@ body {
     /*display: none;*/
 /*}*/
 
+
+
+.welconm_join{
+    margin-top: 40px;
+    text-align: center;
+    font-family: "Merriweather Sans", "Helvetica", Arial, sans-serif;
+    /* margin-bottom: 0; */
+    font-weight: 500;
+    line-height: 1.3;
+    font-size: 26px;
+}
+
+.diaog_main{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9300;
+}
+.diaog_mainbox{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3%;
+    height: 75%;
+    min-height: 600px;
+}
+
+.diaog_mainbox iframe{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+}
+
+.closed{
+    color: red;
+}
+
+.closed:hover{
+    color: wheat;
+}
+.the_down:hover{
+    color: wheat;
+}
+
+
+
+
 a{
     cursor: pointer;
 }

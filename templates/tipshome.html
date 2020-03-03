@@ -61,6 +61,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="/community_home">社团大厅</a></li>
                                             <li><a href="/tipshome">公告大厅</a></li>
+                                            <li><a href="/data_home">资料大厅</a></li>
                                             <!--<li><a href="blog-3-column.html">3 Column</a></li>-->
                                             <!--<li><a href="single-post.html">Single Post</a></li>-->
                                         </ul>
@@ -111,91 +112,30 @@
                 </div>
                 <!-- SLIDER WITH ONE POST -->
 
-                <!-- BLOG POSTS -->
-                <div class="eskimo-masonry-grid">
-                    <div class="eskimo-two-columns" data-columns>
-                        <!-- POST 1 -->
-                        {% for i in response %}
-                        <div class="card-masonry">
-                            <div class="card">
-                                <a href="/base/{{ i[5] }}">
-                                        <img class="card-vertical-img" src="../static/images/back_pack_1.jpg" alt="" />
-                                    </a>
-                                <div class="card-border">
-                                    <div class="card-body">
-                                        <div class="card-category">
-                                            <span><a>创始人: {{ i[2] }}</a></span>
-                                        </div>
-                                        <h3 class="card-title"><a href="/base/{{ i[5] }}">{{ i[0] }}</a></h3>
-                                        <p style="font-family: sans-serif">{{ i[1] }}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="eskimo-author-meta">
-                                            <a class="author-meta">创建时间: </a>
-                                        </div>
-                                        <div class="eskimo-date-meta">
-                                            <a>{{ i[3] }}</a>
-                                        </div>
-                                        <div class="eskimo-reading-meta">🔥: &nbsp{{ i[4] }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+                <!--<div class="row">-->
+                    <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
+                    <!--<div class="col-12">-->
+                        <!--&lt;!&ndash; ALERT INFO &ndash;&gt;-->
 
-                        <!-- POST 2 -->
+                        <!--&lt;!&ndash;for循环&ndash;&gt;-->
+                        <!--{% for public in public_tips %}-->
+                        <!--<div style="margin-bottom: 20px" class="card alert alert-info length">-->
+                            <!--<div class="close" data-dismiss="alert">&times;</div>-->
+                            <!--<h6>{{ public[0] }}</h6>-->
+                            <!--<p>发布时间:{{ public[2] }}</p>-->
+                            <!--<p>{{ public[1] }}</p>-->
+                        <!--</div>-->
+                        <!--{% endfor %}-->
+                        <!--&lt;!&ndash;for循环结束&ndash;&gt;-->
 
-                        <!-- POST 3 -->
 
-                        <!-- POST 4 -->
+                        <!--&lt;!&ndash; ALERT SUCCESS &ndash;&gt;-->
 
-                        <!-- POST 5 -->
+                        <!--&lt;!&ndash; ALERT WARNING &ndash;&gt;-->
 
-                        <!-- POST 6 -->
-
-                    </div>
-                </div>
-                <!-- VIEW ALL BUTTON -->
-                <!--<div class="eskimo-view-more">-->
-                    <!--<a style="color: wheat" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 查看更多</a>-->
+                        <!--&lt;!&ndash; ALERT DANGER &ndash;&gt;-->
+                    <!--</div>-->
                 <!--</div>-->
-
-                <!-- DIVIDER -->
-                <!--<hr class="section-divider" />-->
-
-                <!-- CAROUSEL -->
-                <!--<div class="eskimo-widget-title">-->
-                    <!--<h3 class="eskimo-carousel-title"><span>最新公告 </span><i style="color:red;" class="fa fa-volume-up"></i></h3>-->
-                <!--</div>-->
-
-                <!--<div style="margin-top: 40px" class="eskimo-view-more">-->
-                    <!--<a style="color: wheat;width: 20%" class="btn btn-default" id="show_div"><i class="fa fa-plus"></i>查看更多</a>-->
-                <!--</div>-->
-
-                <div class="row">
-                    <!-- ALERTS -->
-                    <div class="col-12">
-                        <!-- ALERT INFO -->
-
-                        <!--for循环-->
-                        {% for public in public_tips %}
-                        <div style="margin-bottom: 20px" class="card alert alert-info length">
-                            <div class="close" data-dismiss="alert">&times;</div>
-                            <h6>{{ public[0] }}</h6>
-                            <p>发布时间:{{ public[2] }}</p>
-                            <p>{{ public[1] }}</p>
-                        </div>
-                        {% endfor %}
-                        <!--for循环结束-->
-
-
-                        <!-- ALERT SUCCESS -->
-
-                        <!-- ALERT WARNING -->
-
-                        <!-- ALERT DANGER -->
-                    </div>
-                </div>
 
             </div>
         </main>

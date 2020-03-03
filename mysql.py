@@ -65,7 +65,3 @@ def all_department(community_name):
     cur.close()
     return response
 
-
-a = [1, 2, 3, 4, 5, 6]
-c = numpy.array(a).reshape(3, 2)
-print(len(c[1]))

@@ -6,6 +6,7 @@
     <!-- META TAGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700&amp;display=swap'>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <!-- CSS FILES -->
@@ -13,6 +14,7 @@
     <link href="../static/css/fontawesome.css" rel="stylesheet" type="text/css">
     <link href="../static/css/slick.css" rel="stylesheet" type="text/css">
     <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style_2.css" rel=" stylesheet" type="text/css">
     <link rel="icon" href="../static/images/fac.png">
 </head>
 
@@ -61,6 +63,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="/community_home">社团大厅</a></li>
                                             <li><a href="/tipshome">公告大厅</a></li>
+                                            <li><a href="/data_home">资料大厅</a></li>
                                             <!--<li><a href="blog-3-column.html">3 Column</a></li>-->
                                             <!--<li><a href="single-post.html">Single Post</a></li>-->
                                         </ul>
@@ -195,7 +198,7 @@
                 </div>
                 <!-- VIEW ALL BUTTON -->
                 <div class="eskimo-view-more">
-                    <a style="color: wheat" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 查看更多</a>
+                    <a href="/community_home" style="color: wheat" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 查看更多</a>
                 </div>
 
                 <!-- DIVIDER -->
@@ -264,6 +267,26 @@
 
                     </div>
                 </div>
+
+                <div style="text-align: center;margin-bottom:70px;margin-top: 50px">
+                    <i class="the_down" id="put_down"><a class="fa fa-arrow-down fa-3x"></a></i>
+                    <i class="the_down" id="put_up"><a class="fa fa-arrow-up fa-3x"></a></i>
+                </div>
+
+
+                <div id="reg_info" style="margin-bottom: 70px; display: none">
+                    <h3 class="welconm_join"><i class="fa fa-slideshare"></i> 注册属于你自己的社团</h3>
+                    <div class="diaog">
+                        <div class="box">
+                          <div class="kkk" style="text-align: center">
+                            <input style="font-weight: 500;font-size: 0.9em" class="btnn" type="button" value="社团注册" />
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <!-- CREDITS -->
                 <div class="eskimo-footer-credits">
                     <p>
@@ -293,6 +316,19 @@
             </form>
         </div>
     </div>
+
+    <div class="diaog_main">
+        <div style="text-align: center;margin-top: 1%">
+            <i class="closed"><a class="fa fa-times fa-2x"></a></i>
+        </div>
+        <div class="diaog_mainbox modal-content" style="border-radius: 10px;">
+            <iframe src="/send_info"></iframe>
+        </div>
+    <div >
+
+        </div>
+    </div>
+
     <!-- JS FILES -->
     <script src="../static/js/jquery-3.3.1.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
@@ -382,6 +418,34 @@
         $("#show_div").click(function () {
             $(".length").css("display","");
         })
+    </script>
+    <!--js控制弹出窗-->
+    <script type="text/javascript">
+      $(function(){
+        $(".btnn").click(function(){
+          $(".diaog_main").fadeIn();
+        });
+        $(".closed").click(function(){
+          $(".diaog_main").fadeOut();
+        });
+      });
+    </script>
+    <!--js控制注册窗口-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#reg_info").hide();
+            $("#put_up").hide();
+            $("#put_down").click(function(){
+                $("#reg_info").show(800);
+                $("#put_down").hide(500);
+                $("#put_up").show(500);
+          });
+            $("#put_up").click(function () {
+                $("#reg_info").hide(500);
+                $("#put_down").show(800);
+                $("#put_up").hide(800);
+            })
+        });
     </script>
 </body>
 

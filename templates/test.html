@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>www.jb51.net jQuery弹窗</title>
+    <style>
+      *{padding: 0;margin: 0;}
+      .box{width: 100%;height: 100%;}
+      .diaog_main{width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);display: none;position: fixed;z-index: 1;}
+      .diaog_mainbox{width: 800px;height: 100%;margin: 0 auto;background-color: rgba(255,255,255,0.8);padding: 20px;}
+      .kkk{width: 100%;background-color: red;}
+      .closed{color: red;cursor: pointer;}
+    </style>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+      $(function(){
+        $(".btnn").click(function(){
+          $(".diaog_main").fadeIn();
+        });
+        $(".closed").click(function(){
+          $(".diaog_main").fadeOut();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="diaog_main">
+        <div class="diaog_mainbox">
+            <iframe src="send_info.html"></iframe>
+          <div class="closed">点击关闭</div>
+        </div>
+    </div>
+    <div class="box">
+      <div class="kkk">
+        <input class="btnn" type="button" value="点击淡入弹窗" />
+      </div>
+    </div>
+  </body>
+</html>
