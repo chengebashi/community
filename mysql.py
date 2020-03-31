@@ -4,7 +4,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 #链接数据库
-db = pymysql.connect(host='47.100.253.248', user='community', password='123456', database='community')
+db = pymysql.connect(host='127.0.0.1', user='community', password='123456', database='community')
 
 
 def random_number():
