@@ -13,6 +13,8 @@
     <link href="../static/css/fontawesome.css" rel="stylesheet" type="text/css">
     <link href="../static/css/slick.css" rel="stylesheet" type="text/css">
     <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/input-file.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/lay.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="../static/images/fac.png">
 </head>
 
@@ -51,22 +53,33 @@
                                             <!--<li><a href="index3.html">Demo 3</a></li>-->
                                         <!--</ul>-->
                                     </li>
+                                    {% if uname %}
                                     <li><a href="#"><i class="fa fa-drivers-license-o">&nbsp</i>我的信息</a>
                                         <ul class="sub-menu">
-                                            <li><a href="/cname" target="_blank">摄像头</a></li>
-                                            <li><a href="about-2.html">Demo 2</a></li>
+                                            {% if is_super == 0 %}
+                                                <li><a href="/regist_user">注册用户</a></li>
+                                                <li><a href="/userlist">用户信息</a></li>
+
+                                            {% else %}
+                                                <li><a href="/base/{{cid}}">我的社团</a></li>
+                                                <li><a href="/myinfo">修改信息</a></li>
+                                                <li><a href="/updateinfo">填写部门</a></li>
+                                                <li><a href="/send_public">发布公告</a></li>
+                                            {% endif %}
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-th-large">&nbsp</i>信息大厅</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/community_home">社团大厅</a></li>
-                                            <li><a href="/tipshome">公告大厅</a></li>
-                                            <li><a href="/data_home">资料大厅</a></li>
-                                            <!--<li><a href="blog-3-column.html">3 Column</a></li>-->
-                                            <!--<li><a href="single-post.html">Single Post</a></li>-->
-                                        </ul>
+                                    {% endif %}
+                                    <li><a href="/community_home"><i class="fa fa-th-large">&nbsp</i>社团大厅</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="/community_home">社团大厅</a></li>-->
+                                            <!--<li><a href="/tipshome">公告大厅</a></li>-->
+                                            <!--<li><a href="/data_home">资料大厅</a></li>-->
+                                            <!--&lt;!&ndash;<li><a href="blog-3-column.html">3 Column</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li><a href="single-post.html">Single Post</a></li>&ndash;&gt;-->
+                                        <!--</ul>-->
                                     </li>
-                                    <!--<li><a href="galleries.html">Galleries</a></li>-->
+                                    <li><a href="/tipshome"><i class="fa fa-twitch">&nbsp</i>公告大厅</a></li>
+                                    <li><a href="/data_home"><i class="fa fa-database">&nbsp</i>资料大厅</a></li>
                                     <!--<li><a href="other-features.html">Other Features</a></li>-->
                                 </ul>
                             </nav>
@@ -75,11 +88,23 @@
                         <div id="eskimo-social-cell" class="mt-auto w-100">
                             <div id="eskimo-social-inner">
                                 <ul class="eskimo-social-icons">
-                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                    <li>
+                                        {% if uname %}
+                                        <a href="">
+                                        <!--<span style="color:red">user:</span>-->
+                                            <i style="margin-right: 10px;line-height: 30px;" class="fa fa-user-circle-o"></i>
+                                            {{uname}}
+                                            </a>
+                                        {% else %}
+                                        <a href="/login">登陆</a>
+                                        {% endif %}
+                                    </li>
+                                    <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+                                    {% if uname %}
+                                        <li><a href="/logout">注销</a></li>
+                                    {% endif %}
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
@@ -97,7 +122,7 @@
                 </ul>
                 <div class="clearfix"></div>
                 <!-- PAGE TITLE -->
-                <div style="background: rgba(0, 123, 255, 0.55);" class="eskimo-page-title" id="title_top">
+                <div style="background: #7a6bd08f;" class="eskimo-page-title" id="title_top">
                     <h1><i style="color: #004eff" class="fa fa-volume-up"></i><span>&nbsp资 料 大 厅</span></h1>
                     <div style="font-weight: 300" class="eskimo-page-title-meta">
                         <div class="eskimo-author-meta">
@@ -112,25 +137,42 @@
                 </div>
                 <!-- SLIDER WITH ONE POST -->
 
-                <!-- BLOG POSTS -->
-                <div class="eskimo-masonry-grid">
-                    <div class="eskimo-two-columns" data-columns>
-                        <div style="height: 500px"></div>
-                        <!-- POST 1 -->
-
-                        <!-- POST 2 -->
-
-                        <!-- POST 3 -->
-
-                        <!-- POST 4 -->
-
-                        <!-- POST 5 -->
-
-                        <!-- POST 6 -->
-
+                <div class="custom-file-input-style-rounded bg-linear-color">
+                    <div class="custom-file-btn-wrap">
+                        <form id="addForm" style="text-align: center" method="POST" action="/upload" enctype="multipart/form-data">
+                            <span class="custom-file-browse"><i class="fa fa-upload" aria-hidden="true"></i></span>
+                            <input class="custom-file-input-browse" id="custom-file-input-browse-2" type="file" name="chenge" onchange="uploadPic1(event)">
+                        </form>
+                    </div>
+                    <input style="width: 40%;" class="form-control" id="custom-form-control-2" placeholder="Upload Your File" type="text">
+                    <a style="color: black;" id="submit_file">上传</a>
+                </div>
+                <hr style="margin-top: 80px;margin-bottom: 50px;border-top: 1px solid #0037ff45;" class="section-divider" />
+                <div class="windows8">
+                    <div class="wBall" id="wBall_1">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_2">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_3">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_4">
+                        <div class="wInnerBall"></div>
+                    </div>
+                    <div class="wBall" id="wBall_5">
+                        <div class="wInnerBall"></div>
                     </div>
                 </div>
 
+                <!--显示提示上传成功-->
+                <div class="layui-layer layui-layer-dialog layui-layer-border layui-layer-msg layui-layer-hui" id="layui-layer8" type="dialog"  style="z-index: 19891022; width: 360px; top: 30px; left: 749px;display: none">
+                    <div id="tipsp" class="layui-layer-content">上传成功！</div>
+                    <span class="layui-layer-setwin"></span>
+                </div>
+
+                <!-- BLOG POSTS -->
 
                 <div class="row">
                     <!-- ALERTS -->
@@ -138,12 +180,12 @@
                         <!-- ALERT INFO -->
 
                         <!--for循环-->
-                        {% for public in public_tips %}
+                        {% for file in file_list %}
                         <div style="margin-bottom: 20px" class="card alert alert-info length">
                             <div class="close" data-dismiss="alert">&times;</div>
-                            <h6>{{ public[0] }}</h6>
-                            <p>发布时间:{{ public[2] }}</p>
-                            <p>{{ public[1] }}</p>
+                            <h6>文件名:  {{ file.name }}</h6>
+                            <p>上传时间:  {{ file.time }}<a style="margin-left: 76%;color:black" href="/downhome/{{ file.name }}"><i class="fa fa-cloud-download"></i></a></p>
+                            <p>文件大小:  {{ file.size }}</p>
                         </div>
                         {% endfor %}
                         <!--for循环结束-->
@@ -157,9 +199,14 @@
                     </div>
                 </div>
 
+                <hr style="margin-top: 50px;margin-bottom: 50px;border-top: 1px solid orangered;" class="section-divider" />
+
             </div>
         </main>
+
+
         <!-- FOOTER -->
+
         <footer id="eskimo-footer">
             <div class="container">
                 <div class="row eskimo-footer-wrapper">
@@ -193,7 +240,7 @@
     <div id="eskimo-fullscreen-search">
         <div id="eskimo-fullscreen-search-content">
             <a href="#" id="eskimo-close-search"><i class="fa fa-times"></i></a>
-            <form role="search" method="get" action="search.html" class="eskimo-lg-form">
+            <form role="search" method="post" action="/search" class="eskimo-lg-form">
                 <div class="input-group">
                     <input type="text" class="form-control form-control-lg" placeholder="输入社团名" name="s" />
                     <div class="input-group-append">
@@ -212,57 +259,7 @@
     <script src="../static/js/reading-position-indicator.js"></script>
     <script src="../static/js/custom.js"></script>
     <!-- POST SLIDER -->
-    <!--<script>-->
-        <!--(function($) {-->
-            <!--"use strict";-->
-            <!--$(document).ready(function() {-->
-                <!--$('#eskimo-post-slider').slick({-->
-                    <!--autoplay: true,-->
-                    <!--autoplaySpeed: 5000,-->
-                    <!--slidesToScroll: 1,-->
-                    <!--adaptiveHeight: true,-->
-                    <!--slidesToShow: 1,-->
-                    <!--arrows: true,-->
-                    <!--dots: false,-->
-                    <!--fade: true-->
-                <!--});-->
-            <!--});-->
-            <!--$(window).on('load', function() {-->
-                <!--$('#eskimo-post-slider').css('opacity', '1');-->
-                <!--$('#eskimo-post-slider').parent().removeClass('eskimo-bg-loader');-->
-            <!--});-->
-        <!--})(jQuery);-->
 
-    <!--</script>-->
-    <!-- POST CAROUSEL -->
-    <!--<script>-->
-        <!--(function($) {-->
-            <!--"use strict";-->
-            <!--$(document).ready(function() {-->
-                <!--$('#eskimo-post-carousel').slick({-->
-                    <!--infinite: false,-->
-                    <!--slidesToScroll: 1,-->
-                    <!--arrows: true,-->
-                    <!--dots: false,-->
-                    <!--slidesToShow: 3,-->
-                    <!--responsive: [{-->
-                        <!--breakpoint: 992,-->
-                        <!--settings: {-->
-                            <!--slidesToShow: 2-->
-                        <!--}-->
-                    <!--}, {-->
-                        <!--breakpoint: 576,-->
-                        <!--settings: {-->
-                            <!--slidesToShow: 1-->
-                        <!--}-->
-                    <!--}]-->
-
-                <!--});-->
-                <!--$('#eskimo-post-carousel').css('opacity', '1');-->
-            <!--});-->
-        <!--})(jQuery);-->
-
-    <!--</script>-->
     <!--js定义随机背景色-->
     <script>
         $(".alert").css("background-color",function () {
@@ -271,7 +268,54 @@
         return colors[c];
         });
     </script>
+    <!--js控制文件上传-->
+    <script>
+        $("#submit_file").click(function () {
+            var targeturl = $("#addForm").attr("action");
+            var data = new FormData($("#addForm")[0]);
+            line_data = $("#custom-form-control-2").val();
+            console.log(line_data);
+            if (line_data.length === 0){
+                alert('请选择文件!')
+            }
+            else{
+                $(".windows8").css("display","block");
+            $.ajax({
+                type:'post',
+                url:targeturl,
+                cache:false,
+                processData:false,
+                contentType:false,
+                data:data,
+                dataType:'json',
+                success:function (data) {
+                    if (data['err'] == 0){
+                        // alert('上传成功');
+                        $("#layui-layer8").fadeIn(4000);
+                        setTimeout(function()
+                        {$("#layui-layer8").fadeOut(4000);},3000);
+                        $("#custom-form-control-2").val('');
+                        $(".windows8").css("display","none");
+                    }
+                    else{
+                        $(".windows8").css("display","none");
+                        alert('上传失败')
+                    }
+                },
+                error:function () {
+                    alert('网络错误！')
+                }
+            })
+            }
 
+        })
+    </script>
+    <script>
+        function uploadPic1(e) {
+            var value = e.target.files[0].name;
+            $("#custom-form-control-2").val(value);
+        }
+    </script>
 </body>
 
 </html>

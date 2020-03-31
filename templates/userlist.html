@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>校园社团官网</title>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- CSS FILES -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/fontawesome.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="../static/images/fac.png">
+</head>
+
+<body>
+    <!-- READING POSITION INDICATOR -->
+    <progress value="0" id="eskimo-progress-bar">
+        <span class="eskimo-progress-container">
+            <span class="eskimo-progress-bar"></span>
+        </span>
+    </progress>
+    <!-- SITE WRAPPER -->
+    <div id="eskimo-site-wrapper">
+        <!-- MAIN CONTAINER -->
+        <main style="padding-bottom: 0" id="eskimo-main-container">
+            <div class="container">
+                <!-- SIDEBAR -->
+                <div id="eskimo-sidebar">
+                    <div id="eskimo-sidebar-wrapper" class="d-flex align-items-start flex-column h-100 w-100">
+                        <!-- LOGO -->
+                        <div id="eskimo-logo-cell" class="w-100">
+                            <a class="eskimo-logo-link" href="index.html">
+                                <img src="../static/images/menu_logo.png" class="eskimo-logo" alt="eskimo" />
+                            </a>
+                        </div>
+                        <!-- MENU CONTAINER -->
+                        <div id="eskimo-sidebar-cell" class="w-100">
+                            <!-- MOBILE MENU BUTTON -->
+                            <div id="eskimo-menu-toggle">MENU</div>
+                            <!-- MENU -->
+                            <nav id="eskimo-main-menu" class="menu-main-menu-container">
+                                <ul class="eskimo-menu-ul">
+                                    <li><a href="/"><i class="fa fa-home fa-lg">&nbsp</i>首页</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="index.html">Demo 1</a></li>-->
+                                            <!--<li><a href="index.html">Demo 2</a></li>-->
+                                            <!--<li><a href="index3.html">Demo 3</a></li>-->
+                                        <!--</ul>-->
+                                    </li>
+                                    {% if uname %}
+                                    <li><a href="#"><i class="fa fa-drivers-license-o">&nbsp</i>我的信息</a>
+                                        <ul class="sub-menu">
+                                            {% if is_super == 0 %}
+                                                <li><a href="/regist_user">注册用户</a></li>
+                                                <li><a href="/userlist">用户信息</a></li>
+
+                                            {% else %}
+                                                <li><a href="/base/{{cid}}">我的社团</a></li>
+                                                <li><a href="/myinfo">修改信息</a></li>
+                                                <li><a href="/updateinfo">填写部门</a></li>
+                                                <li><a href="/send_public">发布公告</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                    <li><a href="/community_home"><i class="fa fa-th-large">&nbsp</i>社团大厅</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="/community_home">社团大厅</a></li>-->
+                                            <!--<li><a href="/tipshome">公告大厅</a></li>-->
+                                            <!--<li><a href="/data_home">资料大厅</a></li>-->
+                                            <!--&lt;!&ndash;<li><a href="blog-3-column.html">3 Column</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li><a href="single-post.html">Single Post</a></li>&ndash;&gt;-->
+                                        <!--</ul>-->
+                                    </li>
+                                    <li><a href="/tipshome"><i class="fa fa-twitch">&nbsp</i>公告大厅</a></li>
+                                    <li><a href="/data_home"><i class="fa fa-database">&nbsp</i>资料大厅</a></li>
+                                    <!--<li><a href="other-features.html">Other Features</a></li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- SOCIAL MEDIA ICONS -->
+                        <div id="eskimo-social-cell" class="mt-auto w-100">
+                            <div id="eskimo-social-inner">
+                                <ul class="eskimo-social-icons">
+                                    <li>
+                                        {% if uname %}
+                                        <a href="">
+                                        <!--<span style="color:red">user:</span>-->
+                                            <i style="margin-right: 10px;line-height: 30px;" class="fa fa-user-circle-o"></i>
+                                            {{uname}}
+                                            </a>
+                                        {% else %}
+                                        <a href="/login">登陆</a>
+                                        {% endif %}
+                                    </li>
+                                    <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+                                    {% if uname %}
+                                        <li><a href="/logout">注销</a></li>
+                                    {% endif %}
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TOP ICONS -->
+                <ul class="eskimo-top-icons">
+                    <li id="eskimo-panel-icon">
+                        <a href="#" class="eskimo-panel-open"><i class="fa fa-user-circle-o"></i></a>
+                    </li>
+                    <li id="eskimo-search-icon">
+                        <a id="eskimo-open-search" href="#"><i class="fa fa-search"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <!-- PAGE TITLE -->
+                <div style="background: rgba(0, 123, 255, 0.55);" class="eskimo-page-title" id="title_top">
+                    <h1><i style="color: #004eff" class="fa fa-user-circle-o"></i><span>&nbsp用 户 信 息</span></h1>
+                    <div style="font-weight: 300" class="eskimo-page-title-meta">
+                        <div class="eskimo-author-meta">
+                            <i style="color: red" class="fa fa-heart"></i>
+                            看着这些你可能就像看着自己的孩子一样~
+                        </div>
+                        <!--<div class="eskimo-author-meta">成立时间: </div>-->
+                        <!--<div class="eskimo-cat-meta">2020-2-28</div>-->
+                        <!--<div class="eskimo-date-meta">目前人数: </div>-->
+                        <!--<div class="eskimo-reading-meta">80</div>-->
+                    </div>
+                </div>
+                <!-- SLIDER WITH ONE POST -->
+
+                <div class="row">
+                    <!-- ALERTS -->
+                    <div class="col-12">
+                        <!-- ALERT INFO -->
+
+                        <!--for循环-->
+                        {% for user in userlist %}
+                        <div style="margin-bottom: 20px" class="card alert alert-info length">
+                            <div class="close" data-dismiss="alert">&times;</div>
+                            {% if user[0] == 'root'  %}
+                                <h6>用户名(超管)：{{ user[0] }}</h6>
+                            {% else %}
+                                <h6>用户名：{{ user[0] }}</h6>
+                            {% endif %}
+                            <p>密码：{{ user[1] }}</p>
+                            <p>邮箱：{{ user[2] }}</p>
+                        </div>
+                        {% endfor %}
+                        <!--for循环结束-->
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer id="eskimo-footer">
+            <div class="container">
+                <div class="row eskimo-footer-wrapper">
+                    <!-- FOOTER WIDGET 1 -->
+                    <div style="flex: 0 0 100%;max-width: 100%" class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <h5 class="eskimo-title-with-border"><span style="font-weight: 300">每日一句</span></h5>
+                        <p class="everyday_one">杨花落尽子规啼，闻道龙标过五溪。我寄愁心与明月，随君直到夜郎西。</p>
+                        <p class="one_title">——《闻王昌龄左迁龙标遥有此寄》(李白)</p>
+                        <!--<p><a href="about.html" class="btn btn-default">Read More</a></p>-->
+                    </div>
+                    <!-- FOOTER WIDGET 2 -->
+
+
+                </div>
+                <!-- CREDITS -->
+                <div class="eskimo-footer-credits">
+                    <p>
+                        <a href="http://www.bootstrapmb.com" target="_blank">友情链接&加入我们</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- GO TO TOP BUTTON -->
+    <a id="eskimo-gototop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- SLIDE PANEL OVERLAY -->
+    <div id="eskimo-overlay"></div>
+    <!-- SLIDE PANEL -->
+
+    <!-- FULLSCREEN SEARCH -->
+    <div id="eskimo-fullscreen-search">
+        <div id="eskimo-fullscreen-search-content">
+            <a href="#" id="eskimo-close-search"><i class="fa fa-times"></i></a>
+            <form role="search" method="post" action="/search" class="eskimo-lg-form">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="输入社团名" name="s" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- JS FILES -->
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/salvattore.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/panel.js"></script>
+    <script src="../static/js/reading-position-indicator.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <!-- POST SLIDER -->
+    <!--<script>-->
+        <!--(function($) {-->
+            <!--"use strict";-->
+            <!--$(document).ready(function() {-->
+                <!--$('#eskimo-post-slider').slick({-->
+                    <!--autoplay: true,-->
+                    <!--autoplaySpeed: 5000,-->
+                    <!--slidesToScroll: 1,-->
+                    <!--adaptiveHeight: true,-->
+                    <!--slidesToShow: 1,-->
+                    <!--arrows: true,-->
+                    <!--dots: false,-->
+                    <!--fade: true-->
+                <!--});-->
+            <!--});-->
+            <!--$(window).on('load', function() {-->
+                <!--$('#eskimo-post-slider').css('opacity', '1');-->
+                <!--$('#eskimo-post-slider').parent().removeClass('eskimo-bg-loader');-->
+            <!--});-->
+        <!--})(jQuery);-->
+
+    <!--</script>-->
+    <!-- POST CAROUSEL -->
+    <!--<script>-->
+        <!--(function($) {-->
+            <!--"use strict";-->
+            <!--$(document).ready(function() {-->
+                <!--$('#eskimo-post-carousel').slick({-->
+                    <!--infinite: false,-->
+                    <!--slidesToScroll: 1,-->
+                    <!--arrows: true,-->
+                    <!--dots: false,-->
+                    <!--slidesToShow: 3,-->
+                    <!--responsive: [{-->
+                        <!--breakpoint: 992,-->
+                        <!--settings: {-->
+                            <!--slidesToShow: 2-->
+                        <!--}-->
+                    <!--}, {-->
+                        <!--breakpoint: 576,-->
+                        <!--settings: {-->
+                            <!--slidesToShow: 1-->
+                        <!--}-->
+                    <!--}]-->
+
+                <!--});-->
+                <!--$('#eskimo-post-carousel').css('opacity', '1');-->
+            <!--});-->
+        <!--})(jQuery);-->
+
+    <!--</script>-->
+    <!--js定义随机背景色-->
+    <script>
+        $(".alert").css("background-color",function () {
+        var colors=['#6ec7e0','#86d9ab','#fcd27b','#e4c4a1','#cc90cc','#f7765f'];
+        var c=Math.floor(Math.random()*5);
+        return colors[c];
+        });
+    </script>
+
+</body>
+
+</html>

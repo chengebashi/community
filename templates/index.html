@@ -6,7 +6,8 @@
     <!-- META TAGS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700&amp;display=swap'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700&amp;display=swap'>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <!-- CSS FILES -->
@@ -53,22 +54,33 @@
                                             <!--<li><a href="index3.html">Demo 3</a></li>-->
                                         <!--</ul>-->
                                     </li>
+                                    {% if uname %}
                                     <li><a href="#"><i class="fa fa-drivers-license-o">&nbsp</i>我的信息</a>
                                         <ul class="sub-menu">
-                                            <li><a href="/cname" target="_blank">摄像头</a></li>
-                                            <li><a href="about-2.html">Demo 2</a></li>
+                                            {% if is_super == 0 %}
+                                                <li><a href="/regist_user">注册用户</a></li>
+                                                <li><a href="/userlist">用户信息</a></li>
+
+                                            {% else %}
+                                                <li><a href="/base/{{cid}}">我的社团</a></li>
+                                                <li><a href="/myinfo">修改信息</a></li>
+                                                <li><a href="/updateinfo">填写部门</a></li>
+                                                <li><a href="/send_public">发布公告</a></li>
+                                            {% endif %}
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-th-large">&nbsp</i>信息大厅</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/community_home">社团大厅</a></li>
-                                            <li><a href="/tipshome">公告大厅</a></li>
-                                            <li><a href="/data_home">资料大厅</a></li>
-                                            <!--<li><a href="blog-3-column.html">3 Column</a></li>-->
-                                            <!--<li><a href="single-post.html">Single Post</a></li>-->
-                                        </ul>
+                                    {% endif %}
+                                    <li><a href="/community_home"><i class="fa fa-th-large">&nbsp</i>社团大厅</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="/community_home">社团大厅</a></li>-->
+                                            <!--<li><a href="/tipshome">公告大厅</a></li>-->
+                                            <!--<li><a href="/data_home">资料大厅</a></li>-->
+                                            <!--&lt;!&ndash;<li><a href="blog-3-column.html">3 Column</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li><a href="single-post.html">Single Post</a></li>&ndash;&gt;-->
+                                        <!--</ul>-->
                                     </li>
-                                    <!--<li><a href="galleries.html">Galleries</a></li>-->
+                                    <li><a href="/tipshome"><i class="fa fa-twitch">&nbsp</i>公告大厅</a></li>
+                                    <li><a href="/data_home"><i class="fa fa-database">&nbsp</i>资料大厅</a></li>
                                     <!--<li><a href="other-features.html">Other Features</a></li>-->
                                 </ul>
                             </nav>
@@ -77,11 +89,23 @@
                         <div id="eskimo-social-cell" class="mt-auto w-100">
                             <div id="eskimo-social-inner">
                                 <ul class="eskimo-social-icons">
-                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                    <li>
+                                        {% if uname %}
+                                        <a href="">
+                                        <!--<span style="color:red">user:</span>-->
+                                            <i style="margin-right: 10px;line-height: 30px;" class="fa fa-user-circle-o"></i>
+                                            {{uname}}
+                                            </a>
+                                        {% else %}
+                                        <a href="/login">登陆</a>
+                                        {% endif %}
+                                    </li>
+                                    <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+                                    {% if uname %}
+                                        <li><a href="/logout">注销</a></li>
+                                    {% endif %}
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
@@ -129,6 +153,7 @@
                         <!-- POST 1 -->
                         {% if n<4 %}
                         {% for i in range(0, n) %}
+                        {% if response[i][5] != 1004 %}
                         <div class="card-masonry">
                             <div class="card">
                                 <a href="/base/{{ response[i][5] }}">
@@ -154,13 +179,15 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% endfor %}
                         {% else %}
                         {% for i in range(0,4) %}
+                        {% if response[i][5] != 1004 %}
                         <div class="card-masonry">
                             <div class="card">
                                 <a href="/base/{{ response[i][5] }}">
-                                        <img class="card-vertical-img" src="../static/images/back_pack_1.jpg" alt="" />
+                                        <img class="card-vertical-img" src="{{ response[i][6] }}" alt="" />
                                     </a>
                                 <div class="card-border">
                                     <div class="card-body">
@@ -182,6 +209,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% endfor %}
                         {% endif %}
                         <!-- POST 2 -->
@@ -237,7 +265,7 @@
                 </div>
 
                 <div style="margin-top: 40px" class="eskimo-view-more">
-                    <a style="color: wheat;width: 20%" class="btn btn-default" id="show_div"><i class="fa fa-plus"></i>查看更多</a>
+                    <a style="color: wheat;width: 20%" class="btn btn-default" id="show_div" href="/tipshome"><i class="fa fa-plus"></i>查看更多</a>
                 </div>
 
             </div>
@@ -256,11 +284,11 @@
                     <!-- FOOTER WIDGET 2 -->
                     <div class="col-12 col-lg-6">
                         <h5 class="eskimo-title-with-border"><span style="font-weight: 300">资料下载</span></h5>
-                        {% for a in range(0,3) %}
+                        {% for a in file_list %}
                         <div style="margin-bottom: 5px" class="card alert alert-info">
                             <i style="margin-bottom: 0; top:11px;float: left" class="fa fa-chain"></i>
-                            <a class="files">&nbsp明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。</a>
-                            <a style="color: black" href=""><i class="fa fa-cloud-download"></i></a>
+                            <a class="files">&nbsp{{ a.name }}</a>
+                            <a style="color: black" href="/indexdonw/{{ a.name }}"><i class="fa fa-cloud-download"></i></a>
                         </div>
                         {% endfor %}
 
@@ -306,7 +334,7 @@
     <div id="eskimo-fullscreen-search">
         <div id="eskimo-fullscreen-search-content">
             <a href="#" id="eskimo-close-search"><i class="fa fa-times"></i></a>
-            <form role="search" method="get" action="search.html" class="eskimo-lg-form">
+            <form role="search" method="post" action="/search" class="eskimo-lg-form">
                 <div class="input-group">
                     <input type="text" class="form-control form-control-lg" placeholder="输入社团名" name="s" />
                     <div class="input-group-append">
@@ -400,25 +428,25 @@
     </script>
 
     <!--js隐藏div-->
-    <script type="text/javascript">
-        var l = $(".length").length;
-        var n = $(".length");
-        if (l > 2){
-            for (j=2; j<=l; j++){
-                k = j-1;
-                n[k].style.display="none";
-            }
-        }
-        $("#show_div").click(function () {
-            n.remove("display","none")
-        })
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--var l = $(".length").length;-->
+        <!--var n = $(".length");-->
+        <!--if (l > 2){-->
+            <!--for (j=2; j<=l; j++){-->
+                <!--k = j-1;-->
+                <!--n[k].style.display="none";-->
+            <!--}-->
+        <!--}-->
+        <!--$("#show_div").click(function () {-->
+            <!--n.remove("display","none")-->
+        <!--})-->
+    <!--</script>-->
     <!--js控制显示隐藏的div-->
-    <script type="text/javascript">
-        $("#show_div").click(function () {
-            $(".length").css("display","");
-        })
-    </script>
+    <!--<script type="text/javascript">-->
+        <!--$("#show_div").click(function () {-->
+            <!--$(".length").css("display","");-->
+        <!--})-->
+    <!--</script>-->
     <!--js控制弹出窗-->
     <script type="text/javascript">
       $(function(){
@@ -436,14 +464,14 @@
             $("#reg_info").hide();
             $("#put_up").hide();
             $("#put_down").click(function(){
-                $("#reg_info").show(800);
-                $("#put_down").hide(500);
-                $("#put_up").show(500);
+                $("#reg_info").show(500);
+                $("#put_down").hide(300);
+                $("#put_up").show(300);
           });
             $("#put_up").click(function () {
-                $("#reg_info").hide(500);
-                $("#put_down").show(800);
-                $("#put_up").hide(800);
+                $("#reg_info").hide(300);
+                $("#put_down").show(500);
+                $("#put_up").hide(500);
             })
         });
     </script>

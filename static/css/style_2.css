@@ -46,7 +46,7 @@ input{
 }
 
 .input_information[type=text] {
-  width: calc(100% - 30px);
+  width: calc(60% - 30px);
   margin-bottom: 30px;
   border: 2px solid #868283;
 }
@@ -57,7 +57,7 @@ input{
   color: #A3A5AA;
 }
 .input_information[type=text][half] {
-  width: calc(50% - 30px);
+  width: calc(60% - 30px);
   float: left;
   margin-right: 30px;
 }

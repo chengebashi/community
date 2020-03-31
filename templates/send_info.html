@@ -6,23 +6,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,700&amp;display=swap'>
   <link rel="stylesheet" href="../static/css/style_2.css">
 </head>
+<style>
+    #tip{
+        font-size: 15px;
+        padding: 8px;
+        border: 1px solid #ff000033;
+        border-radius: 10px;
+        background-color: #f5593dba;
+        margin-left: 150px;
+    }
+</style>
 <body>
 <!-- partial:index.partial.html -->
 <div class="sendmain">
 <form autocomplete="off" class="sendmyself">
     <div id="focus"></div>
-    <h1 class="info_title">输入你的申请信息</h1>
-    <input type="text" half placeholder="First name" autocomplete="no" class="input_information">
-    <input type="text" half placeholder="Last name" autocomplete="no" class="input_information">
-    <input type="text" placeholder="Address" autocomplete="no" class="input_information">
-    <input type="text" half placeholder="Zip code" autocomplete="no" class="input_information">
-    <input type="text" half placeholder="City" autocomplete="no" class="input_information">
-    <input type="text" placeholder="Mail" autocomplete="no" class="input_information">
-    <input type="submit" value="提交审核" id="send_information">
+    <h1 class="info_title">输入你的申请信息<span style="display: none" id="tip"></span></h1>
+    <input type="text" half placeholder="社团名称：20字以内" autocomplete="no" class="input_information" id="com_name">
+    <input type="text" half placeholder="用户名：10字以内" autocomplete="no" class="input_information" id="usr_name">
+    <input type="text" half placeholder="密码：6字以上16字以内" autocomplete="no" class="input_information" id="password">
+    <input type="text" half placeholder="邮箱" autocomplete="no" class="input_information" id="email">
+
+    <input type="button" value="提交审核" id="send_information">
 </form>
 </div>
 <!-- partial -->
 <script src='../static/js/jquery-3.3.1.min.js'></script><script  src="../static/js/script.js"></script>
+    <script>
+        $(function(){
+            var flag_community_name = false;
+            var flag_user_name = false;
+            var flag_password = false;
+            var flag_email = false;
+            $("#com_name").change(function () {
+                var com_name = $("#com_name").val().length;
+                if(com_name === 0 || com_name >20 ){
+                    $("#tip").html('社团名字长度有误');
+                    $("#tip").css('display','inline');
+                    flag_community_name = false;
+                }
+                else{
+                    $("#tip").html('');
+                    $("#tip").css('display','none');
+                    flag_community_name = true;
+                }
+            });
 
+            $("#usr_name").change(function () {
+                var usr_name = $("#usr_name").val().length;
+                if(usr_name === 0 || usr_name >10 ){
+                    $("#tip").html('用户名长度有误');
+                    $("#tip").css('display','inline');
+                    flag_user_name = false;
+                }
+                else{
+                    $("#tip").html('');
+                    $("#tip").css('display','none');
+                    flag_user_name = true;
+                }
+            });
+
+            $("#password").change(function () {
+                var password = $("#password").val().length;
+                if(password === 0 || password >16 ){
+                    $("#tip").html('密码长度有误');
+                    $("#tip").css('display','inline');
+                    flag_password = false;
+                }
+                else{
+                    $("#tip").html('');
+                    $("#tip").css('display','none');
+                    flag_password = true;
+                }
+            });
+
+            $("#email").change(function () {
+                var email_value = $("#email").val();
+                var re= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if(re.test(email_value)){
+                    $("#tip").html('');
+                    $("#tip").css('display','none');
+                    flag_email = true;
+                }
+                else{
+                    $("#tip").html('邮箱格式有误！');
+                    $("#tip").css('display','inline');
+                    flag_email = false;
+                }
+            });
+            $("#send_information").click(function () {
+                if(flag_community_name&&flag_user_name&&flag_password&&flag_email){
+                    var com_name = $("#com_name").val();
+                    var usr_name = $("#usr_name").val();
+                    var password = $("#password").val();
+                    var email_value = $("#email").val();
+                    var data = JSON.stringify({'com_name':com_name,'usr_name':usr_name,'password':password,'email_value':email_value});
+                    $.ajax({
+                        type: 'POST',
+                        contentType: 'application/json; charset = UTF-8',
+                        dataType: 'json',
+                        url: '/sendallinfo',
+                        data: data,
+                        success:function (data) {
+                            if (data.err === 0){
+                                alert('申请提交成功，审核成功后结果会发至邮箱!');
+                            }
+                            else{
+                                alert(data.err);
+                            }
+                        },
+                        error:function () {
+                            console.log(9999);
+                        }
+                    });
+                }
+                else{
+                   if(!flag_community_name){
+                       $("#tip").html('社团名字长度有误!');
+                       $("#tip").css('display','inline');
+                   }
+                   if(!flag_user_name){
+                       $("#tip").html('用户名长度有误!');
+                       $("#tip").css('display','inline');
+                   }
+                   if(!flag_password){
+                       $("#tip").html('密码长度有误!');
+                       $("#tip").css('display','inline');
+                   }
+                   if(!flag_email){
+                       $("#tip").html('邮箱格式有误！');
+                       $("#tip").css('display','inline');
+                   }
+                }
+            })
+        });
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>校园社团官网</title>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- CSS FILES -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/fontawesome.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/slick.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="icon" href="../static/images/fac.png">
+</head>
+
+<body>
+    <!-- READING POSITION INDICATOR -->
+    <progress value="0" id="eskimo-progress-bar">
+        <span class="eskimo-progress-container">
+            <span class="eskimo-progress-bar"></span>
+        </span>
+    </progress>
+    <!-- SITE WRAPPER -->
+    <div id="eskimo-site-wrapper">
+        <!-- MAIN CONTAINER -->
+        <main style="padding-bottom: 0" id="eskimo-main-container">
+            <div class="container">
+                <!-- SIDEBAR -->
+                <div id="eskimo-sidebar">
+                    <div id="eskimo-sidebar-wrapper" class="d-flex align-items-start flex-column h-100 w-100">
+                        <!-- LOGO -->
+                        <div id="eskimo-logo-cell" class="w-100">
+                            <a class="eskimo-logo-link" >
+                                <!--<img src="../static/images/menu_logo.png" class="eskimo-logo" alt="eskimo" />-->
+                                <video autoplay loop muted playsinline class="eskimo-logo">
+                                    <source src="../static/images/love.mp4" type="video/mp4">
+                                </video>
+                            </a>
+                        </div>
+                        <!-- MENU CONTAINER -->
+                        <div id="eskimo-sidebar-cell" class="w-100">
+                            <!-- MOBILE MENU BUTTON -->
+                            <div id="eskimo-menu-toggle">MENU</div>
+                            <!-- MENU -->
+                            <nav id="eskimo-main-menu" class="menu-main-menu-container">
+                                <ul class="eskimo-menu-ul">
+                                    <li><a href="/"><i class="fa fa-home fa-lg">&nbsp</i>首页</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="index.html">Demo 1</a></li>-->
+                                            <!--<li><a href="index.html">Demo 2</a></li>-->
+                                            <!--<li><a href="index3.html">Demo 3</a></li>-->
+                                        <!--</ul>-->
+                                    </li>
+                                    {% if uname %}
+                                    <li><a href="#"><i class="fa fa-drivers-license-o">&nbsp</i>我的信息</a>
+                                        <ul class="sub-menu">
+                                            {% if is_super == 0 %}
+                                                <li><a href="/regist_user">注册用户</a></li>
+                                                <li><a href="/userlist">用户信息</a></li>
+
+                                            {% else %}
+                                                <li><a href="/base/{{cid}}">我的社团</a></li>
+                                                <li><a href="/myinfo">修改信息</a></li>
+                                                <li><a href="/updateinfo">填写部门</a></li>
+                                                <li><a href="/send_public">发布公告</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                    <li><a href="/community_home"><i class="fa fa-th-large">&nbsp</i>社团大厅</a>
+                                        <!--<ul class="sub-menu">-->
+                                            <!--<li><a href="/community_home">社团大厅</a></li>-->
+                                            <!--<li><a href="/tipshome">公告大厅</a></li>-->
+                                            <!--<li><a href="/data_home">资料大厅</a></li>-->
+                                            <!--&lt;!&ndash;<li><a href="blog-3-column.html">3 Column</a></li>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<li><a href="single-post.html">Single Post</a></li>&ndash;&gt;-->
+                                        <!--</ul>-->
+                                    </li>
+                                    <li><a href="/tipshome"><i class="fa fa-twitch">&nbsp</i>公告大厅</a></li>
+                                    <li><a href="/data_home"><i class="fa fa-database">&nbsp</i>资料大厅</a></li>
+                                    <!--<li><a href="other-features.html">Other Features</a></li>-->
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- SOCIAL MEDIA ICONS -->
+                        <div id="eskimo-social-cell" class="mt-auto w-100">
+                            <div id="eskimo-social-inner">
+                                <ul class="eskimo-social-icons">
+                                    <li>
+                                        {% if uname %}
+                                        <a href="">
+                                        <!--<span style="color:red">user:</span>-->
+                                            <i style="margin-right: 10px;line-height: 30px;" class="fa fa-user-circle-o"></i>
+                                            {{uname}}
+                                            </a>
+                                        {% else %}
+                                        <a href="/login">登陆</a>
+                                        {% endif %}
+                                    </li>
+                                    <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+                                    <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+                                    {% if uname %}
+                                        <li><a href="/logout">注销</a></li>
+                                    {% endif %}
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TOP ICONS -->
+                <ul class="eskimo-top-icons">
+                    <li id="eskimo-panel-icon">
+                        <a href="#" class="eskimo-panel-open"><i class="fa fa-user-circle-o"></i></a>
+                    </li>
+                    <li id="eskimo-search-icon">
+                        <a id="eskimo-open-search" href="#"><i class="fa fa-search"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <!-- PAGE TITLE -->
+                <div style="background: #f5593d8c;" class="eskimo-page-title" id="title_top">
+                    <h1><i style="color: #004eff" class="fa fa-anchor"></i><span>&nbsp社团和用户注册</span></h1>
+                    <div style="font-weight: 300" class="eskimo-page-title-meta">
+                        <div class="eskimo-author-meta">
+                            <i style="color: red" class="fa fa-heart"></i>
+                            在这里，你仿佛赋予了一个新的生命~
+                        </div>
+                        <!--<div class="eskimo-author-meta">成立时间: </div>-->
+                        <!--<div class="eskimo-cat-meta">2020-2-28</div>-->
+                        <!--<div class="eskimo-date-meta">目前人数: </div>-->
+                        <!--<div class="eskimo-reading-meta">80</div>-->
+                    </div>
+                </div>
+                <!-- SLIDER WITH ONE POST -->
+                <ul style="border-bottom: 1px solid #ffc107;" class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a style="border-color: #ffc107;border-bottom-color: transparent;" class="nav-link active" data-toggle="tab" href="#mp-tab-fashion" aria-expanded="true"><i class="fa fa-th-large"></i>&nbsp基础信息</a>
+                    </li>
+                </ul>
+                <!-- TABS CONTENT -->
+                <div style="border: 1px solid #ffc107;border-top: none;" class="eskimo-tabs-content tab-content">
+                    <!-- TAB 1 -->
+                    <div class="tab-pane fade active show" id="mp-tab-fashion" role="button" aria-expanded="true">
+                        <div style="margin-top: 50px">
+                            <span style="letter-spacing: 3.3px;margin-left: 50px;" class="word_sty">用户名: </span>
+                            <input id='user' style="width: 60%;display: inline;border-radius: 10px;margin-left: 50px;" type="text" half placeholder="最多输入10个字">
+                            <span class="err_tips" id = "tips1">社团名: </span>
+                        </div>
+
+                        <div  style="margin-top: 50px;">
+                            <span style="letter-spacing: 3.3px;margin-left: 50px;" class="word_sty">密&nbsp&nbsp码: </span>
+                            <input id='pass' style="width: 60%;display: inline;border-radius: 10px;margin-left: 50px;" type="text" half placeholder="最多输入5个字">
+                            <span class="err_tips" id = "tips2">社团名: </span>
+                        </div>
+                        <div style="margin-top: 50px;margin-bottom: 50px">
+                            <span style="margin-left: 50px;" class="word_sty">社团名: </span>
+                            <input id='c_name' style="width: 60%;display: inline;border-radius: 10px;margin-left: 65px;" type="text" half placeholder="最多输入10个字">
+                            <span class="err_tips" id = "tips3">社团名: </span>
+                        </div>
+                        <div style="margin-top: 50px;margin-bottom: 50px">
+                            <span style="letter-spacing: 3.3px;margin-left: 50px;" class="word_sty">邮&nbsp&nbsp箱: </span>
+                            <input id='u_email' style="width: 60%;display: inline;border-radius: 10px;margin-left: 50px;" type="text" half placeholder="输入标准邮箱格式">
+                            <span class="err_tips" id = "tips4">社团名: </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="eskimo-view-more" style="margin-top: 100px" id="btn_show1">
+                    <a href="javascript:void(0);" style="color: wheat;margin-right:40%;width: 20%;line-height: 30px;height: 50px" class="btn btn-default" id="show_community"><i class="fa fa-plus"></i> 提交</a>
+                </div>
+                <hr style="border-color: #7facad">
+
+                <!-- SLIDER WITH ONE POST -->
+
+                <!-- TABS CONTENT -->
+
+                <!-- SLIDER WITH ONE POST -->
+
+
+            </div>
+        </main>
+        <!-- FOOTER -->
+        <footer id="eskimo-footer">
+            <div class="container">
+                <div class="row eskimo-footer-wrapper">
+                    <!-- FOOTER WIDGET 1 -->
+                    <div style="flex: 0 0 100%;max-width: 100%" class="col-12 col-lg-6 mb-4 mb-lg-0">
+                        <h5 class="eskimo-title-with-border"><span style="font-weight: 300">每日一句</span></h5>
+                        <p class="everyday_one">杨花落尽子规啼，闻道龙标过五溪。我寄愁心与明月，随君直到夜郎西。</p>
+                        <p class="one_title">——《闻王昌龄左迁龙标遥有此寄》(李白)</p>
+                        <!--<p><a href="about.html" class="btn btn-default">Read More</a></p>-->
+                    </div>
+                    <!-- FOOTER WIDGET 2 -->
+
+
+                </div>
+                <!-- CREDITS -->
+                <div class="eskimo-footer-credits">
+                    <p>
+                        <a href="http://www.bootstrapmb.com" target="_blank">友情链接&加入我们</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- GO TO TOP BUTTON -->
+    <a id="eskimo-gototop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- SLIDE PANEL OVERLAY -->
+    <div id="eskimo-overlay"></div>
+    <!-- SLIDE PANEL -->
+
+    <!-- FULLSCREEN SEARCH -->
+    <div id="eskimo-fullscreen-search">
+        <div id="eskimo-fullscreen-search-content">
+            <a href="#" id="eskimo-close-search"><i class="fa fa-times"></i></a>
+            <form role="search" method="post" action="/search" class="eskimo-lg-form">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="输入社团名" name="s" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- JS FILES -->
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/salvattore.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/panel.js"></script>
+    <script src="../static/js/reading-position-indicator.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../static/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+
+    <!--</script>-->
+    <!--js定义随机背景色-->
+    <script>
+        $(".alert").css("background-color",function () {
+        var colors=['#6ec7e0','#86d9ab','#fcd27b','#e4c4a1','#cc90cc','#f7765f'];
+        var c=Math.floor(Math.random()*5);
+        return colors[c];
+        });
+    </script>
+    <!--时间弹窗-->
+    <script type="text/javascript">
+        $('.form_date').datetimepicker({
+            language: 'zh-CN',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+    </script>
+    <!--提交-->
+    <script type="text/javascript">
+        $(function() {
+            var flag_usernaem = false;
+            var flag_pass = false;
+            var flag_community = false;
+            var flag_email = false;
+            $("#user").change(function () {
+                var user_len = $("#user").val().length;
+                if (user_len ===0 || user_len > 10){
+                    $("#tips1").html('用户名字长度有误');
+                    $("#tips1").css('display','inline');
+                    flag_usernaem = false;
+                }
+                else{
+                    $("#tips1").html('');
+                    $("#tips1").css('display','none');
+                    flag_usernaem = true;
+                }
+            });
+
+            $("#pass").change(function () {
+                var pass_len = $("#pass").val().length;
+                if (pass_len ===0 || pass_len > 16){
+                    $("#tips2").html('密码长度有误');
+                    $("#tips2").css('display','inline');
+                    flag_pass = false;
+                }
+                else{
+                    $("#tips2").html('');
+                    $("#tips2").css('display','none');
+                    flag_pass = true;
+                }
+            });
+
+            $("#c_name").change(function () {
+                var c_name_len = $("#c_name").val().length;
+                if (c_name_len ===0 || c_name_len > 20){
+                    $("#tips3").html('社团名称长度有误');
+                    $("#tips3").css('display','inline');
+                    flag_community = false;
+                }
+                else{
+                    $("#tips3").html('');
+                    $("#tips3").css('display','none');
+                    flag_community = true;
+                }
+            });
+
+            $("#u_email").change(function () {
+                var u_email = $("#u_email").val();
+                var re= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                if (re.test(u_email)){
+                    $("#tips4").html('');
+                    $("#tips4").css('display','none');
+                    flag_email = true;
+                }
+                else{
+                    $("#tips4").html('邮箱格式有误');
+                    $("#tips4").css('display','inline');
+                    flag_email = false;
+                }
+            });
+            $("#show_community").click(function () {
+                if (flag_usernaem&&flag_pass&&flag_community&&flag_email){
+                    var user_name = $("#user").val();
+                    var pass = $("#pass").val();
+                    var communit_name = $("#c_name").val();
+                    var email = $('#u_email').val();
+                    data_data = JSON.stringify({'uname':user_name,'pwd':pass,'cname':communit_name,'email':email});
+                    $.ajax({
+                        type: 'POST',
+                        contentType: 'application/json; charset = UTF-8',
+                        dataType: 'json',
+                        url: '/register_newuser',
+                        data: data_data,
+                        success:function (data) {
+                            if (data.err === 0){
+                                alert('用户及社团注册成功!')
+                            }
+                            else{
+                                alert(data.err)
+                            }
+                        },
+                        error:function () {
+                            alert('系统后台错误')
+                        }
+                    })
+                }
+                else{
+                    if (!flag_usernaem){
+                        $("#tips1").html('用户名字长度有误');
+                        $("#tips1").css('display','inline');
+                    }
+                    if(!flag_pass){
+                        $("#tips2").html('密码长度有误');
+                        $("#tips2").css('display','inline');
+                    }
+                    if(!flag_community){
+                        $("#tips3").html('社团名称长度有误');
+                        $("#tips3").css('display','inline');
+                    }
+                    if(!flag_email){
+                        $("#tips4").html('邮箱格式有误');
+                        $("#tips4").css('display','inline');
+                    }
+                }
+        });
+        }) ;
+
+    </script>
+</body>
+
+</html>
